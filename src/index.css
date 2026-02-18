@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Lato";
+  src: url(./assets/fonts/Lato/Lato-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Special Elite";
+  src: url(./assets/fonts/Special_Elite/SpecialElite-Regular.ttf) format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-lato: "Lato", sans-serif;
+  --font-special-elite: "Special Elite", cursive;
+}
+
+* {
+  font-family: var(--font-special-elite)
+}
