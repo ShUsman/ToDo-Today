@@ -33,7 +33,7 @@ const theme = createTheme({
           },
         },
       },
-    },
+    }, 
   },
 });
 
@@ -62,9 +62,9 @@ export default function AddTask() {
             height: "3.4rem",
             borderRadius: "0.75rem",
             fontSize: "1.5rem",
-            // "&:hover": {
-            //   backgroundColor: grey[900],
-            // },
+            "&:hover": {
+              backgroundColor: grey[900],
+            },
           }}
         >
           + Add
