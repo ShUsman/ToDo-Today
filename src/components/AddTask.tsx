@@ -1,4 +1,10 @@
-import { Stack, TextField, Button, createTheme, ThemeProvider } from "@mui/material";
+import {
+  Stack,
+  TextField,
+  Button,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
 import { grey } from "@mui/material/colors";
 
 const theme = createTheme({
@@ -7,33 +13,52 @@ const theme = createTheme({
       main: grey[600],
     },
   },
-
+  typography: {
+    fontFamily: "var(--font-special-elite)",
+  },
   components: {
     MuiTextField: {
       styleOverrides: {
         root: {
-          "& .MuiOutlinedInput-root": {
-            backgroundColor: "#ffffff",
+          "& .MuiInputBase-root": {
+            height: "3.5rem",
+            borderRadius: "0.75rem",
+            boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+            overflow: "hidden",
           },
-          "& .MuiInputLabel-outlined": {
-            color: grey[600],
-          },
-          "& .MuiInputLabel-outlined.Mui-focused": {
-            color: grey[700],
-          },
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: grey[400],
-          },
-          "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: grey[600],
-            borderWidth: "1px",
+          "& .MuiInputBase-root.Mui:hover": {
+            border: "1px solid grey[400]",
           },
           "& .MuiInputBase-input": {
+            color: "#000000",
+            fontSize: "1.5rem",
+          },
+          "& .MuiInputLabel-outlined": {
+            fontSize: "1.25rem",
+          },
+          "& .MuiInputLabel-outlined.MuiInputLabel-shrink": {
+            fontSize: "1.04rem",
             color: "#000000",
           },
         },
       },
-    }, 
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: "none",
+          alignItems: "baseline",
+          backgroundColor: "black",
+          width: "9rem",
+          height: "3.6rem",
+          borderRadius: "0.75rem",
+          fontSize: "1.8rem",
+          "&:hover": {
+            backgroundColor: "#222222",
+          },
+        },
+      },
+    },
   },
 });
 
@@ -44,28 +69,9 @@ export default function AddTask() {
         <TextField
           label="Type your task here..."
           variant="outlined"
-          sx={{
-            width: "35.75rem",
-            "& .MuiInputBase-root": {
-              height: "3.5rem",
-              borderRadius: "0.75rem",
-            },
-          }}
+          sx={{ width: "35.75rem" }}
         />
-
-        <Button
-          variant="contained"
-          sx={{
-            textTransform: "none",
-            backgroundColor: "black",
-            width: "9rem",
-            height: "3.4rem",
-            borderRadius: "0.75rem",
-            fontSize: "1.5rem",
-          }}
-        >
-          + Add
-        </Button>
+        <Button variant="contained">+ Add</Button>
       </Stack>
     </ThemeProvider>
   );
