@@ -6,6 +6,8 @@ import {
   ThemeProvider,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
+import  { useState, useEffect } from 'react';
+
 
 const theme = createTheme({
   palette: {
@@ -62,16 +64,42 @@ const theme = createTheme({
   },
 });
 
+
+const useTypewriter = (text, speed) => {
+  const [displayText, setDisplayText] = useState('');
+
+  useEffect(() => {
+    let i = 0;
+    const typingInterval = setInterval(() => {
+      if (i < text.length) {
+        setDisplayText(text.substring(0, i + 1))
+        i++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, speed);
+
+    return () => {
+      clearInterval(typingInterval);
+    };
+  }, [text, speed]);
+
+  return displayText;
+};
+
 export default function AddTask() {
+
+const displayText = useTypewriter("Type your task here...", 40);
+
   return (
     <ThemeProvider theme={theme}>
       <Stack direction="row" spacing={2} alignItems="center">
         <TextField
-          label="Type your task here..."
+          label= {displayText}
           variant="outlined"
           sx={{ width: "35.75rem" }}
         />
-        <Button variant="contained">+ Add</Button>
+        <Button variant="contained" /*onClick={addToTaskList}*/>+ Add</Button>
       </Stack>
     </ThemeProvider>
   );
